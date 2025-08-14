@@ -24,7 +24,7 @@ function showHistory() {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td colspan="6" class="py-4 text-gray-500 text-center">
-        Koi conversion history nahi mili. Pehle kuch currencies convert karo!
+       No conversion history found. Try converting some currencies first!
       </td>
     `;
     tableBody.appendChild(row);
