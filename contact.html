@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#250821',
+                        dark2: '#292e33',
+                        'neon-aqua': '#12f7ff'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Hide sidebar and menu button on desktop */
+        @media (min-width: 1024px) {
+            #mobile-menu-button, #sidebar {
+                display: none !important;
+            }
+        }
+        
+        /* Mobile navbar height */
+        @media (max-width: 1023px) {
+            header {
+                height: 60px;
+            }
+            .logo-img {
+                height: 40px;
+                width: 35px;
+            }
+            .logo-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+  <!-- ========== HEADER COMPONENT ========== -->
+<header class="sticky h-24 top-0 z-40 bg-gradient-to-r from-indigo-200 to-green-300 dark:from-[#00203F] dark:via-[#004D4D] dark:to-[#00A8A8] shadow-md">
+    <div class="container mx-auto px-4 h-full flex items-center justify-between">
+        <!-- Logo and Title -->
+        <div class="flex items-center">
+         <a href="#"><img src="https://img.icons8.com/fluency/96/000000/exchange.png" alt="Currency Exchange" class="logo-img h-12 w-10 mr-2 cursor-pointer"></a>
+            <h1 href="#" id="heading-logo" class="logo-text text-xl font-bold text-gray-800 dark:text-white cursor-pointer">CURRENCY CONVERTOR</h1>
+        </div>
+        
+        <!-- Mobile Menu Button (Visible only on mobile) -->
+        <button id="mobile-menu-button" class="lg:hidden fixed top-3 right-3 z-50 p-2 rounded-md text-gray-700 dark:text-white focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+
+
+        <!-- Desktop Navigation (Hidden on mobile) -->
+        <nav class="hidden lg:flex items-center space-x-6">
+
+            <!-- <div class="flex space-x-8"> -->
+              <ul class="flex items-center space-x-8">
+                <li class="list-none">
+                    <a href="home.html" class="relative text-gray-700 dark:text-gray-300 font-medium group hover:text-gray-900 dark:hover:text-white transition-colors">
+                        <span class="relative">
+                            Home
+                            <span class="absolute left-0 bottom-0 h-[2px] bg-indigo-500 w-0 group-hover:w-full transition-all duration-300 transform origin-left"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-none">
+                    <a href="history.html" class="relative text-gray-700 dark:text-gray-300 font-medium group hover:text-gray-900 dark:hover:text-white transition-colors">
+                        <span class="relative">
+                            History
+                            <span class="absolute left-0 bottom-0 h-[2px] bg-indigo-500 w-0 group-hover:w-full transition-all duration-300 transform origin-left"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-none">
+                    <a href="about.html" class="relative text-gray-700 dark:text-gray-300 font-medium group hover:text-gray-900 dark:hover:text-white transition-colors">
+                        <span class="relative">
+                            About
+                            <span class="absolute left-0 bottom-0 h-[2px] bg-indigo-500 w-0 group-hover:w-full transition-all duration-300 transform origin-left"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="list-none">
+                    <a href="contact.html" class="relative text-gray-700 dark:text-gray-300 font-medium group hover:text-gray-900 dark:hover:text-white transition-colors">
+                        <span class="relative">
+                            Contact
+                            <span class="absolute left-0 -bottom-1 h-[2px] bg-indigo-500 w-0 group-hover:w-full transition-all duration-300 transform origin-left"></span>
+                        </span>
+                    </a>
+                </li>
+                <!-- /////// -->
+                 <!-- toggle button -->
+                <!-- From Uiverse.io by rishichawda --> 
+                 <li class="list-none">
+<label id="theme-toggle-button" style="position: relative; bottom: 10px;">
+  <input type="checkbox" id="toggle">
+  <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(3.5 3.5)" data-name="Component 15 – 1" id="Component_15_1">
+      
+      
+      <g filter="url(#container)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+        <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" data-name="container" id="container"></rect>
+      </g>
+      
+      <g transform="translate(2.333 2.333)" id="button">
+        
+        <g data-name="sun" id="sun">
+          <g filter="url(#sun-outer)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+            <circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="sun-outer" id="sun-outer-2"></circle>
+          </g>
+          <g filter="url(#sun)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+            <path fill="rgba(246,254,247,0.29)" transform="translate(9.33 9.33)" d="M11.667,0A11.667,11.667,0,1,1,0,11.667,11.667,11.667,0,0,1,11.667,0Z" data-name="sun" id="sun-3"></path>
+          </g>
+          <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7" id="sun-inner"></circle>
+        </g>
+        
+          
+        <g data-name="moon" id="moon">
+          <g filter="url(#moon)" transform="matrix(1, 0, 0, 1, -31.5, -5.83)">
+            <circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="moon" id="moon-3"></circle>
+          </g>
+          <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
+            <circle transform="translate(43.009 4.496)" r="2" cy="2" cx="2"></circle>
+            <circle transform="translate(39.366 17.952)" r="2" cy="2" cx="2" data-name="patch"></circle>
+            <circle transform="translate(33.016 8.044)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(51.081 18.888)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(33.016 22.503)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(50.081 10.53)" r="1.5" cy="1.5" cx="1.5" data-name="patch"></circle>
+          </g>
+        </g>
+      </g>
+      
+      
+      <g filter="url(#cloud)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+        <path fill="#fff" transform="translate(-3466.47 -160.94)" d="M3512.81,173.815a4.463,4.463,0,0,1,2.243.62.95.95,0,0,1,.72-1.281,4.852,4.852,0,0,1,2.623.519c.034.02-.5-1.968.281-2.716a2.117,2.117,0,0,1,2.829-.274,1.821,1.821,0,0,1,.854,1.858c.063.037,2.594-.049,3.285,1.273s-.865,2.544-.807,2.626a12.192,12.192,0,0,1,2.278.892c.553.448,1.106,1.992-1.62,2.927a7.742,7.742,0,0,1-3.762-.3c-1.28-.49-1.181-2.65-1.137-2.624s-1.417,2.2-2.623,2.2a4.172,4.172,0,0,1-2.394-1.206,3.825,3.825,0,0,1-2.771.774c-3.429-.46-2.333-3.267-2.2-3.55A3.721,3.721,0,0,1,3512.81,173.815Z" data-name="cloud" id="cloud"></path>
+      </g>
+
+      
+      <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+        <path transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"></path>
+        <path transform="matrix(-0.777, 0.629, -0.629, -0.777, 23.185, 12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z" data-name="star"></path>
+        <path transform="matrix(0.438, 0.899, -0.899, 0.438, 23.177, 29.735)" d="M.015,1.065.475.9l.285.365L.766.772l.46-.164L.745.494.751,0,.481.407,0,.293.285.658Z" data-name="star"></path>
+        <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z" data-name="star"></path>
+        <path transform="matrix(-0.07, 0.998, -0.998, -0.07, 11.066, 15.457)" d="M.873,1.648l.114-.62L1.579.945,1.03.62,1.144,0,.706.464.157.139.438.7,0,1.167l.592-.083Z" data-name="star"></path>
+        <path transform="translate(8.326 28.061) rotate(11)" d="M.593,0,.638.724,0,.982l.7.211.045.724.36-.64.7.211L1.342.935,1.7.294,1.063.552Z" data-name="star"></path>
+        <path transform="translate(5.012 5.962) rotate(172)" d="M.816,0,.5.455,0,.311.323.767l-.312.455.516-.215.323.456L.827.911,1.343.7.839.552Z" data-name="star"></path>
+        <path transform="translate(2.218 14.616) rotate(169)" d="M1.261,0,.774.571.114.3.487.967,0,1.538.728,1.32l.372.662.047-.749.728-.218L1.215.749Z" data-name="star"></path>
+      </g>
+    </g>
+  </svg>
+</label>
+</li>
+</ul>
+
+                 <!-- //////// -->
+            </div>
+            
+            <!-- Dark Mode Toggle (Same on all pages) --> 
+        </nav>
+    </div>
+</header>
+<!-- ////mobile view ke toggle button ka code/ -->
+ 
+ <!-- // -->
+<!-- Mobile Sidebar (Same for all pages) -->
+<!-- Mobile Sidebar -->
+<div id="sidebar" class="fixed inset-y-0 right-0 transform translate-x-full w-64 bg-white dark:bg-gray-800 shadow-lg z-40 transition-transform duration-300 ease-in-out">
+    <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+        <button id="close-sidebar" class="p-1 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+    
+    <nav class="p-4">
+        <ul class="space-y-2">
+            <li>
+                <a href="home.html" class="flex items-center justify-between p-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <span>Home</span>
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a href="history.html" class="flex items-center justify-between p-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <span>History</span>
+                    <i class="fas fa-history"></i>
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="flex items-center justify-between p-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <span>About</span>
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="flex items-center justify-between p-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <span>Contact</span>
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </li>
+            
+            <!-- Dark Mode Toggle for Mobile -->
+            <li class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between p-2">
+                  <label id="theme-toggle-button" style="position: relative; bottom: 10px;">
+  <input type="checkbox" id="toggle" hidden>
+  <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(3.5 3.5)" data-name="Component 15 – 1" id="Component_15_1">
+      
+      
+      <g filter="url(#container)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+        <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" data-name="container" id="container"></rect>
+      </g>
+      
+      <g transform="translate(2.333 2.333)" id="button">
+        
+        <g data-name="sun" id="sun">
+          <g filter="url(#sun-outer)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+            <circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="sun-outer" id="sun-outer-2"></circle>
+          </g>
+          <g filter="url(#sun)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+            <path fill="rgba(246,254,247,0.29)" transform="translate(9.33 9.33)" d="M11.667,0A11.667,11.667,0,1,1,0,11.667,11.667,11.667,0,0,1,11.667,0Z" data-name="sun" id="sun-3"></path>
+          </g>
+          <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7" id="sun-inner"></circle>
+        </g>
+        
+          
+        <g data-name="moon" id="moon">
+          <g filter="url(#moon)" transform="matrix(1, 0, 0, 1, -31.5, -5.83)">
+            <circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="moon" id="moon-3"></circle>
+          </g>
+          <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
+            <circle transform="translate(43.009 4.496)" r="2" cy="2" cx="2"></circle>
+            <circle transform="translate(39.366 17.952)" r="2" cy="2" cx="2" data-name="patch"></circle>
+            <circle transform="translate(33.016 8.044)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(51.081 18.888)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(33.016 22.503)" r="1" cy="1" cx="1" data-name="patch"></circle>
+            <circle transform="translate(50.081 10.53)" r="1.5" cy="1.5" cx="1.5" data-name="patch"></circle>
+          </g>
+        </g>
+      </g>
+      
+      
+      <g filter="url(#cloud)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+        <path fill="#fff" transform="translate(-3466.47 -160.94)" d="M3512.81,173.815a4.463,4.463,0,0,1,2.243.62.95.95,0,0,1,.72-1.281,4.852,4.852,0,0,1,2.623.519c.034.02-.5-1.968.281-2.716a2.117,2.117,0,0,1,2.829-.274,1.821,1.821,0,0,1,.854,1.858c.063.037,2.594-.049,3.285,1.273s-.865,2.544-.807,2.626a12.192,12.192,0,0,1,2.278.892c.553.448,1.106,1.992-1.62,2.927a7.742,7.742,0,0,1-3.762-.3c-1.28-.49-1.181-2.65-1.137-2.624s-1.417,2.2-2.623,2.2a4.172,4.172,0,0,1-2.394-1.206,3.825,3.825,0,0,1-2.771.774c-3.429-.46-2.333-3.267-2.2-3.55A3.721,3.721,0,0,1,3512.81,173.815Z" data-name="cloud" id="cloud"></path>
+      </g>
+
+      
+      <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+        <path transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"></path>
+        <path transform="matrix(-0.777, 0.629, -0.629, -0.777, 23.185, 12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z" data-name="star"></path>
+        <path transform="matrix(0.438, 0.899, -0.899, 0.438, 23.177, 29.735)" d="M.015,1.065.475.9l.285.365L.766.772l.46-.164L.745.494.751,0,.481.407,0,.293.285.658Z" data-name="star"></path>
+        <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z" data-name="star"></path>
+        <path transform="matrix(-0.07, 0.998, -0.998, -0.07, 11.066, 15.457)" d="M.873,1.648l.114-.62L1.579.945,1.03.62,1.144,0,.706.464.157.139.438.7,0,1.167l.592-.083Z" data-name="star"></path>
+        <path transform="translate(8.326 28.061) rotate(11)" d="M.593,0,.638.724,0,.982l.7.211.045.724.36-.64.7.211L1.342.935,1.7.294,1.063.552Z" data-name="star"></path>
+        <path transform="translate(5.012 5.962) rotate(172)" d="M.816,0,.5.455,0,.311.323.767l-.312.455.516-.215.323.456L.827.911,1.343.7.839.552Z" data-name="star"></path>
+        <path transform="translate(2.218 14.616) rotate(169)" d="M1.261,0,.774.571.114.3.487.967,0,1.538.728,1.32l.372.662.047-.749.728-.218L1.215.749Z" data-name="star"></path>
+      </g>
+    </g>
+  </svg>
+</label>
+
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Overlay -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+<!-- header code end -->
+
+<main class="bg-white dark:bg-gray-900 transition-colors duration-300">
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-r from-indigo-50 to-green-50 dark:from-gray-800 dark:to-gray-700">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        Get in <span class="text-indigo-500">Touch</span>
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Have questions or feedback? We'd love to hear from you! Reach out through our contact form or directly via our support channels.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row gap-12">
+      <!-- Contact Form -->
+      <div class="md:w-1/2">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-gray-700 dark:text-gray-300">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
+          
+          <form class="space-y-6">
+            <!-- Name Field -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white transition-all"
+                placeholder="John Doe"
+                required
+              >
+            </div>
+            
+            <!-- Email Field -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white transition-all"
+                placeholder="you@example.com"
+                required
+              >
+            </div>
+            
+            <!-- Message Field -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
+              <textarea 
+                id="message" 
+                rows="5" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white transition-all"
+                placeholder="How can we help you?"
+                required
+              ></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              class="w-full bg-gradient-to-r from-indigo-500 to-green-500 dark:from-[#005555] dark:to-[#008888] dark:text-white text-black py-3 px-6 rounded-lg font-medium hover:from-indigo-600 hover:to-green-600 dark:from-[#005555] dark:to-[#008888] dark:text-white py-3 px-6 rounded-lg font-medium hover:from-green-300 hover:to-indigo-400 dark:hover:from-[#006666] dark:hover:to-[#009999] transition-all shadow-md hover:shadow-lg"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="md:w-1/2">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg h-full">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
+          
+          <div class="space-y-6">
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full">
+                <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Email Us</h3>
+                <p class="text-gray-600 dark:text-gray-300">support@finconvert.com</p>
+                <p class="text-gray-600 dark:text-gray-300">sales@finconvert.com</p>
+              </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-green-100 dark:bg-green-900 p-3 rounded-full">
+                <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Social Media</h3>
+                <div class="flex space-x-4 mt-2">
+                  <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                    </svg>
+                  </a>
+                  <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/>
+                    </svg>
+                  </a>
+                  <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-purple-100 dark:bg-purple-900 p-3 rounded-full">
+                <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Need Help?</h3>
+                <p class="text-gray-600 dark:text-gray-300">Check our <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">FAQ section</a> or <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">knowledge base</a> for quick answers to common questions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer Section with Enhanced Styling -->
+ <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Company Info Column -->
+      <div class="space-y-4">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-white">CURRENCY CONVERTOR</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Providing accurate currency conversion services since 2015. Trusted by businesses and individuals worldwide for reliable exchange rates.
+        </p>
+        <div class="flex space-x-4 pt-2">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+            <span class="sr-only">Facebook</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+            <span class="sr-only">Twitter</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+            <span class="sr-only">LinkedIn</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+            <span class="sr-only">Instagram</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <!-- <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041.058h-.2c-2.597 0-2.917-.01-3.96-.058-.976-.045-1.505-.207-1.858-.344-.467-.182-.8-.398-1.15-.748-.35-.35-.566-.683-.748-1.15-.137-.353-.3-.882-.344-1.857-.048-1.023-.058-1.351-.058-3.807v-.468zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /> -->
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="space-y-4">
+        <h3 class="text-white font-semibold text-lg">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">History</a></li>
+          <!-- <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Pricing</a></li> -->
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links Column -->
+      <div class="space-y-4">
+        <h3 class="text-white font-semibold text-lg">Support</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Help Center</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">FAQs</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">API Documentation</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Column -->
+    <!-- Currency Tools Section -->
+<div class="space-y-4">
+  <h3 class="text-white font-semibold text-lg">Currency Tools</h3>
+  <ul class="space-y-3">
+    <li>
+      <a href="#" class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+        </svg>
+        Historical Rates
+      </a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Currency Calculator
+      </a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+        Market Trends
+      </a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        Currency API
+      </a>
+    </li>
+  </ul>
+</div>
+
+    <!-- Copyright Section -->
+    <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+      <p class="text-gray-500 text-sm">
+        &copy; 2025 FinConvert. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+ <!-- end footer section -->
+
+
+</div>
+    
+</body>
+<script src="script.js"></script>
+<script src="sidbar.js"></script>
+</html>

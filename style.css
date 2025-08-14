@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+#heading-logo {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* /// media quer */
+/* For desktop toggle button */
+@media (min-width: 1024px) {
+    .toggle-container {
+        width: 100px !important;
+        height: 40px !important;
+    }
+    .toggle-thumb {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* For mobile toggle button */
+@media (max-width: 1023px) {
+    .toggle-container {
+        width: 80px !important;
+        height: 36px !important;
+        margin-right: 12px;
+    }
+    .toggle-thumb {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .data-text {
+        font-size: 10px !important;
+    }
+}
+
+/* ,mmmmmmmmmmmmmmmmmmmmm */
+
+/* From Uiverse.io by rishichawda */ 
+/* The switch - the box around the slider */
+#theme-toggle-button {
+  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+#toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#container,
+#patches,
+#stars,
+#button,
+#sun,
+#moon,
+#cloud {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.25s;
+}
+
+/* night sky background */
+#toggle:checked + svg #container {
+  fill: #2b4360;
+}
+
+/* move button to right when checked */
+#toggle:checked + svg #button {
+  transform: translate(28px, 2.333px);
+}
+
+/* show/hide sun and moon based on checkbox state */
+#sun {
+  opacity: 1;
+}
+
+#toggle:checked + svg #sun {
+  opacity: 0;
+}
+
+#moon {
+  opacity: 0;
+}
+
+#toggle:checked + svg #moon {
+  opacity: 1;
+}
+
+/* show or hide background items on checkbox state */
+#cloud {
+  opacity: 1;
+}
+
+#toggle:checked + svg #cloud {
+  opacity: 0;
+}
+
+#stars {
+  opacity: 0;
+}
+
+#toggle:checked + svg #stars {
+  opacity: 1;
+}
+
+
+/* //////////////////// */
+
+.dark {
+  background-color: #111;
+  color: #fff;
+}
+
+.dark .box {
+  border-color: #444;
+  background-color: #222;
+}
