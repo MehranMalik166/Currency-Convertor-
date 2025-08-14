@@ -304,21 +304,21 @@
 </div>
 
 <!-- table html  -->
-  <div class="text-center max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center m-4">History Table</h2>
-  <div class="overflow-x-auto flex justify-center">
-    <table class="min-w-full border border-gray-300 text-center">
-      <thead class="bg-gray-100 dark:text-black">
-        <tr>
-          <th class="px-4 py-3 border">S.no</th>
-          <th class="px-4 py-3 border">From</th>
-          <th class="px-4 py-3 border">To</th>
-          <th class="px-4 py-3 border">Amount</th>
-          <th class="px-4 py-3 border">Converted</th>
-          <th class="px-4 py-3 border">Timestamp</th>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-center mb-6">History Table</h2>
+  <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+      <thead class="bg-gray-50 dark:bg-gray-800">
+       <tr>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">S.NO</th>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">From</th>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">To</th>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Amount</th>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Result</th>
+          <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Date</th>
         </tr>
       </thead>
-      <tbody id="tableBody" class="text-sm">
+      <tbody id="tableBody" class="text-sm" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
         <!-- Rows will be inserted here by JavaScript -->
       </tbody>
     </table>
