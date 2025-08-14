@@ -24,7 +24,7 @@ document.getElementById('clearBtn').addEventListener('click', function() {
     
     alert("All history has been deleted successfully!");
   }
-});
+
 
   //  / Sidebar toggle functionality
   // Toggle sidebar on mobile
@@ -69,6 +69,6 @@ document.getElementById('clearBtn').addEventListener('click', function() {
         // Check on resize
         window.addEventListener('resize', checkScreenSize);
 
-
+});
       
 // Load history when page loads
