@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const history = JSON.parse(localStorage.getItem('currencyHistory')) || [];
     
     if (history.length === 0) {
-      alert("Aapki history pehle se hi khali hai!");
+      alert("History Table already empty!");
       return;
     }
 
