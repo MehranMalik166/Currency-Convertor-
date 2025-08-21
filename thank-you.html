@@ -1,20 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Thank You</title>
+    <title>Thank You - Currency Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Page load pe theme check karo
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL parameters se theme check karo
+            const urlParams = new URLSearchParams(window.location.search);
+            const theme = urlParams.get('theme');
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Agar URL mein theme nahi hai, to localStorage ya system preference check karo
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            animation: fall linear forwards;
+            z-index: 10;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 5;
+            stroke: #4ade80;
+            stroke-miterlimit: 10;
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+            margin: 0 auto;
+        }
+        
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 5;
+            stroke-miterlimit: 10;
+            stroke: #4ade80;
+            fill: none;
+            animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
+        }
+        
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
+        }
+        
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+        
+        @keyframes fill {
+            100% {
+                box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+            }
+        }
+        
+        .theme-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-        <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Thank You!</h1>
-        <p class="text-gray-600 dark:text-gray-300 mb-6">Your message has been sent successfully.</p>
-        <a href="home.html" class="inline-block bg-gradient-to-r from-indigo-500 to-green-500 dark:from-[#005555] dark:to-[#008888] text-white py-2 px-6 rounded-lg font-medium hover:from-indigo-600 hover:to-green-600 dark:hover:from-[#006666] dark:hover:to-[#009999] transition-all shadow-md hover:shadow-lg">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex items-center justify-center p-4 theme-transition">
+    <div class="fixed inset-0 bg-gradient-to-br from-indigo-100 to-green-100 dark:from-gray-900 dark:to-gray-800 z-0 theme-transition"></div>
+    
+    <div class="w-full max-w-md bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 text-center relative z-10 border border-white/20 dark:border-gray-700/30 theme-transition">
+        <!-- Success Icon -->
+        <div class="mb-6">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-4 theme-transition">Thank You!</h1>
+        <p class="text-gray-600 dark:text-gray-300 mb-2 text-lg theme-transition">Your message has been sent successfully.</p>
+        <p class="text-gray-500 dark:text-gray-400 mb-8 text-sm theme-transition">We'll get back to you within 24 hours.</p>
+        
+        <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 mb-8 border border-indigo-100 dark:border-indigo-800/30 theme-transition">
+            <p class="text-indigo-700 dark:text-indigo-300 text-sm theme-transition">📧 A confirmation email has been sent to your inbox.</p>
+        </div>
+        
+        <a href="index.html" class="inline-block w-full bg-gradient-to-r from-indigo-500 to-green-500 dark:from-[#005555] dark:to-[#008888] text-white py-4 px-6 rounded-xl font-medium hover:from-indigo-600 hover:to-green-600 dark:hover:from-[#006666] dark:hover:to-[#009999] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-green-400 text-center theme-transition">
             Back to Home
         </a>
+        
+        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 theme-transition">
+            <p class="text-sm text-gray-500 dark:text-gray-400 theme-transition">Need immediate assistance?</p>
+            <p class="text-indigo-600 dark:text-indigo-400 font-medium theme-transition">support@currencytracker.com</p>
+        </div>
     </div>
+    
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#ff577f', '#ff884b', '#ffc764', '#cdfffc', '#9adcff', '#c8a2c8'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.opacity = '1';
+                
+                document.body.appendChild(confetti);
+                
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Run confetti when page loads
+        window.addEventListener('load', createConfetti);
+    </script>
 </body>
-<script src="sidbar.js"></script>
 </html>
