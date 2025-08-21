@@ -7,26 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Page load pe theme check karo
-        document.addEventListener('DOMContentLoaded', function() {
-            // URL parameters se theme check karo
-            const urlParams = new URLSearchParams(window.location.search);
-            const theme = urlParams.get('theme');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // URL parameters se theme check karo
+        //     const urlParams = new URLSearchParams(window.location.search);
+        //     const theme = urlParams.get('theme');
             
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else if (theme === 'light') {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                // Agar URL mein theme nahi hai, to localStorage ya system preference check karo
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-            }
-        });
+        //     if (theme === 'dark') {
+        //         document.documentElement.classList.add('dark');
+        //         localStorage.setItem('theme', 'dark');
+        //     } else if (theme === 'light') {
+        //         document.documentElement.classList.remove('dark');
+        //         localStorage.setItem('theme', 'light');
+        //     } else {
+        //         // Agar URL mein theme nahi hai, to localStorage ya system preference check karo
+        //         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        //             document.documentElement.classList.add('dark');
+        //         } else {
+        //             document.documentElement.classList.remove('dark');
+        //         }
+        //     }
+        // });
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -166,4 +166,5 @@
         window.addEventListener('load', createConfetti);
     </script>
 </body>
+<script src="sidbar.js"></script>
 </html>
