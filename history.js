@@ -1,5 +1,3 @@
-// // history.js - Ye alag file banao aur sirf history.html mein include kar
-
 
 // Show history function
 // Ye function history show karega
